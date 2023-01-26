@@ -3,8 +3,8 @@ import * as dotenv from 'dotenv';
 import cors from 'cors';
 
 import connectDB from './mongodb/connect.js';
-import postRoutes from './routes/post.js';
-import artefyRoutes from './routes/artefy.js';
+import postRoutes from './routes/postRoutes.js';
+import artefyRoutes from './routes/artefyRoutes.js';
 
 dotenv.config();
 
