@@ -5,7 +5,7 @@ import { Home, CreatePost } from './pages'
 function App() {
   return (
     <BrowserRouter>
-      <header className="w-full flex items-center justify-between bg-white sm:px-8 py-4 border-b border-b-[#e6ebf4]">
+      <header className="w-full flex items-center justify-between bg-white sm:px-8 p-3 py-4 border-b border-b-[#e6ebf4]">
         <Link to="/">
           <img src={logo} alt='logo' className="w-28 object-contain" />
         </Link>
