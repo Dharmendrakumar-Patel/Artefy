@@ -9,20 +9,25 @@ function CreatePost() {
     const navigate = useNavigate()
     const [form, setForm] = useState({
         name: '',
-        propmt: '',
+        prompt: '',
         photo: '',
     })
-    const [generatingimg, setGeneratingImg] = useState(false)
+    const [generatingImg, setGeneratingImg] = useState(false)
     const [loading, setLoading] = useState(false)
 
-    const handleSubmit = (e) => {
+    const genrateImage = async () => {}
 
+    const handleSubmit = (e) => {
     }
 
     const handleChange = (e) => {
+        setForm({...form, [e.target.name]: e.target.value})
     }
 
-    const handleSurpriseMe = (e) => {}
+    const handleSurpriseMe = (e) => {
+        const randomPrompt = getRandomPrompt(form.prompt)
+        setForm({...form, prompt: randomPrompt})
+    }   
 
   return (
     <section className='max-w-7xl mx-auto'>
@@ -55,6 +60,56 @@ function CreatePost() {
                     isSurpriseMe
                     handleSurpriseMe={handleSurpriseMe}
                 />
+
+                <div className='relative bg-grey-50 broder border-grey-300 text-grey-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-64 p-3 flex justify-center items-center'>
+                    {
+                        form.photo ? (
+                            <img 
+                                src={form.photo}
+                                alt={form.prompt}
+                                className='w-full h-full object-contain'
+                            />
+                        ) : (
+                            <img
+                                src={preview}
+                                alt='preview'
+                                className='w-full h-full object-contain opacity-40'
+                            />
+                        )
+                    }
+                    
+                    {
+                        generatingImg && (
+                            <div className='absolute inset-0 z-0 flex justify-center items-center bg-[rgba(0,0,0,0.5)] rounded-lg'>
+                                <Loader />
+                            </div>
+                        )
+                    }
+                </div>
+            </div>
+
+            <div className='mt-5 flex gap-5'>
+                <button
+                    type='button'
+                    onClick={genrateImage}
+                    className='text-white bg-green-700 font-medium rounded-md text-sm w-full sm:w-auto px-5 py-2.5 text-center'
+                >
+                    {
+                        generatingImg ? 'Generating Image' : 'Generate Image'
+                    }
+                </button>
+            </div>
+
+            <div className='mt-10'>
+                <p className='mt-2 text-[#666e75] text-[14px]'>
+                    Once you have created the image you want, you can share it with others in the community.
+                </p>
+                <button
+                    type='submit'
+                    className='mt-3 text-white bg-[#6469FF] font-medium rounded-md text-sm w-full sm:w-auto px-5 py-2.5 text-center'
+                >
+                    {loading ? 'Sharing...' : 'Share with the community'}
+                </button>
             </div>
         </form>
     </section>
