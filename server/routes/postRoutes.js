@@ -27,7 +27,7 @@ router.route('/').get(async(req,res) => {
     } catch(error) {
         res.status(500).json({
             success: false,
-            message: error
+            message: 'Fetching posts failed, please try again'
         })
     }
 })
@@ -52,7 +52,7 @@ router.route('/').post(async(req,res) => {
     } catch(error) {
         res.status(500).json({
             success: false,
-            message: error
+            message: 'Unable to create a post, please try again'
         })
     }
 })
