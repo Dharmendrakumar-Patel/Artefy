@@ -42,17 +42,18 @@ function CreatePost() {
                 const data = await response.json();
                 setForm({ ...form, photo: `data:image/jpeg;base64,${data.photo}` });
             } catch (err) {
-                alert(err);
+                console.log(err);
             } finally {
                 setGeneratingImg(false);
             }
         } else {
-            alert('Please provide proper prompt');
+            console.log('Please provide proper prompt');
         }
     }
 
-    const handleSubmit = async () => {
-        if(form.prompt && form.photo){
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        if(form && form.prompt && form.photo){
             console.log(form)
             setLoading(true)
             try{
@@ -64,16 +65,15 @@ function CreatePost() {
                     body: JSON.stringify(form)
                 });
 
-                await response.json();
-                alert('Post created successfully')
+                console.log('Post created successfully')
                 navigate('/')
             }catch(error){
-                alert(error)
+                console.log(error)
             }finally{
                 setLoading(false)
             }
         }else{
-            alert('Please provide proper prompt and image')
+            console.log('Please provide proper prompt and image')
         }
     }
 
