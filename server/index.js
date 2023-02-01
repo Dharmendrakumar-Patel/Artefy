@@ -22,5 +22,5 @@ app.use('/api/v1/post', postRoutes);
 app.use('/api/v1/artefy', artefyRoutes);
 
 app.listen(8080, () => {
-    console.log(`Server started on port http://localhost:8080`);
+    console.log(`Server started on port https://artefy.onrender.com`);
 });
