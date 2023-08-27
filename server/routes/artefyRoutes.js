@@ -27,7 +27,7 @@ router.route('/').post(async(req,res) => {
             response_format: 'b64_json',
         })
         
-        console.log('api response',aiResponse)
+        console.log('api response',aiResponse.data.data[0])
 
         const image = aiResponse.data.data[0].b64_json;
 
